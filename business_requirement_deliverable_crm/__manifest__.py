@@ -2,24 +2,24 @@
 # © 2016 Elico Corp (https://www.elico-corp.com).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    'name': 'Business Requirement Deliverable - Project',
+    'name': 'Business Requirement Deliverable - CRM',
     'category': 'Business Requirements Management',
-    'summary': 'Create projects and tasks directly from'
-            ' the Business Requirement and Resources lines',
-    'version': '8.0.4.0.4',
+    'summary': 'Create your sales quotations directly from the'
+            ' Business Requirements deliverables',
+    'version': '10.0.0.0.1',
     'website': 'www.elico-corp.com',
     "author": "Elico Corp, Odoo Community Association (OCA)",
     'depends': [
         'business_requirement_deliverable',
-        'project',
+        'crm',
+        'sale_crm',
     ],
     'data': [
-        'views/business_view.xml',
-        'wizard/generate_projects_view.xml',
+        'wizard/crm_make_sale_view.xml',
+        'views/crm_view.xml',
     ],
     'image': [
-        'static/description/icon.png',
-        'static/img/bus_req_project.png'
+        'static/description/icon.png'
     ],
     'license': 'AGPL-3',
     'installable': True,

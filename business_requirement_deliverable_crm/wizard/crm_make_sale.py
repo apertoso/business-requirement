@@ -6,7 +6,7 @@ from openerp.exceptions import ValidationError
 
 class CrmMakeSale(models.TransientModel):
     _name = "br.crm.make.sale"
-    _inherit = "crm.make.sale"
+    # _inherit = "crm.make.sale" Todo check if this is still necessary
 
     update_quotation = fields.Boolean('Update existing quotation')
 

@@ -31,7 +31,7 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,stakeholder_approval,in_progress,done,cancel"/>
                     </header>
                     <sheet>
-                        <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                        <div class="oe_button_box" name="buttons" groups="base.group_user">
                              <button class="oe_inline oe_stat_button" type="action" name="%(act_view_sub_br_all)d" icon="fa-tasks">
                                 <field name="sub_br_count" string="Sub Bus. Req." widget="statinfo"/>
                             </button>                          
@@ -40,7 +40,7 @@
                             <field name="name" class="oe_inline" readonly="1"/>-
                             <field name="description"/>
                         </h1>
-                        <group col="4">
+                        <group>
                             <field name="project_id"/>
                             <field name="partner_id"/>
                             <field name="category_ids" widget="many2many_tags"/>
@@ -50,7 +50,7 @@
                         </group>
                         
                         <notebook>
-                            <page string="Business Requirement">
+                            <page string="Business Requirement" name="business_requirement">
                                 <group string="Customer Story">
                                      <field name="business_requirement" nolabel="1"/>
                                 </group>
@@ -65,24 +65,24 @@
                                 </group>
                             </page>
                             <page string="Other Information">
-                                <group col="12">
-                                    <field name="parent_id"/>
-                                    <field name="level"/>
-                                </group>
-                                <group col="12">
-                                    <field name="create_uid" readonly="1"/>
-                                    <field name="requested_id"/>
-                                </group>
-                                <group col="12">
-                                    <field name="create_date" readonly="1"/>
-                                </group>
-                                <group col="12">
-                                    <field name="confirmed_id"/>
-                                    <field name="confirmation_date"/>
-                                </group>
-                                <group col="12">
-                                    <field name="approved_id"/>
-                                    <field name="approval_date"/>
+                                <group>
+                                    <group string="Misc.">
+                                        <field name="parent_id"/>
+                                        <field name="level"/>
+                                        <field name="requested_id"/>
+                                    </group>
+                                    <group string="Creation">
+                                        <field name="create_uid" readonly="1"/>
+                                        <field name="create_date" readonly="1"/>
+                                    </group>
+                                    <group string="Confirmation">
+                                        <field name="confirmed_id"/>
+                                        <field name="confirmation_date"/>
+                                    </group>
+                                    <group string="Approved">
+                                        <field name="approved_id"/>
+                                        <field name="approval_date"/>
+                                    </group>
                                 </group>
                             </page>
                         </notebook>

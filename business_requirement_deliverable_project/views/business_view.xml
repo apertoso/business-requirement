@@ -34,8 +34,8 @@
             <field name="model">business.requirement</field>
             <field name="inherit_id" ref="business_requirement.view_business_requirement_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//header/field[@name='state']"
-                       position="before">
+                <xpath expr="//header"
+                       position="inside">
                     <button name="generate_projects_wizard"
                             string="Generate Projects"
                             type="object"
@@ -70,12 +70,14 @@
             <field name="model">project.project</field>
             <field name="inherit_id" ref="project.edit_project"/>
             <field name="arch" type="xml">
-                <xpath expr="//header/field[@name='state']" position="before">
-                    <button name="generate_project_wizard"
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="generate_project_wizard"
                             string="Projects From Business Requirement"
                             type="object"
                             class="oe_highlight"
                             groups="business_requirement.group_business_requirement_manager"/>
+                    </header>
                 </xpath>
             </field>
         </record>
@@ -85,7 +87,7 @@
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
-               <field name="categ_ids"
+               <field name="partner_id"
                       position="after">
                     <field name="business_requirement_id"
                            string="Business requirement"

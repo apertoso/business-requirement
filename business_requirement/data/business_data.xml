@@ -2,11 +2,6 @@
 <openerp>
     <data noupdate="1">
 
-        <record id="seq_type_business_requirement" model="ir.sequence.type">
-            <field name="name">Business Requirement</field>
-            <field name="code">business.requirement</field>
-        </record>
-
         <record id="seq_business_requirement" model="ir.sequence">
             <field name="name">Business Requirement</field>
             <field name="code">business.requirement</field>

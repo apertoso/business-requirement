@@ -2,27 +2,24 @@
 # © 2016 Elico Corp (www.elico-corp.com).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Business Requirement Deliverable Cost Control",
-    "summary": "Control the cost of your Business Requirements",
-    "version": "8.0.1.0.1",
+    "name": "Business Requirement Resources Task Categories",
     'category': 'Business Requirement Management',
+    'summary': 'Adds Task Categories to your Business Requirement Resources',
+    "version": "10.0.0.0.1",
     "website": "www.elico-corp.com",
     "author": "Elico Corp, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
     "depends": [
-        "business_requirement_deliverable",
+        "project_categ",
+        "business_requirement_deliverable"
     ],
     'image': [
         'static/description/icon.png',
-        'static/img/bus_req_acl1.png',
-        'static/img/bus_req_acl2.png',
-        'static/img/bus_req_acl3.png',
-        'static/img/bus_req_control.png'
+        'static/img/bus_req_category.png'
     ],
     "data": [
-        "security/business_requirement_deliverable_security.xml",
-        "views/business.xml",
+        "views/business_requirement_deliverable_categ.xml",
     ],
 }

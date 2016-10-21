@@ -19,7 +19,7 @@ class BusinessRequirement(models.Model):
             raise except_orm(
                 _('Error!'),
                 _('There is no default company for the current user!'))
-        return self.env['res.company'].browse(company_id)
+        return self.env['res.company'].browse(company_id.id)
 
     sequence = fields.Char(
         'Sequence',
@@ -185,8 +185,10 @@ class BusinessRequirement(models.Model):
 
     @api.model
     def create(self, vals):
+        print vals
         if vals.get('name', '/') == '/':
-            vals['name'] = self.env['ir.sequence'].get('business.requirement')
+            vals['name'] = self.env['ir.sequence'].next_by_code('business.requirement')
+        print vals
         return super(BusinessRequirement, self).create(vals)
 
     @api.multi
@@ -254,26 +256,25 @@ class BusinessRequirement(models.Model):
     def action_button_drop(self):
         self.write({'state': 'drop'})
 
-    @api.cr_uid_ids_context
-    def message_post(self, cr, uid, thread_id, body='', subject=None,
-                     type='notification', subtype=None, parent_id=False,
-                     attachments=None, context=None,
+    @api.multi
+    @api.returns('self', lambda value: value.id)
+    def message_post(self, body='', subject=None, message_type='notification',
+                     subtype=None, parent_id=False, attachments=None,
                      content_subtype='html', **kwargs):
         subject = None
-        if context.get(
+        if self._context.get(
                 'default_model'
-        ) == 'business.requirement' and context.get('default_res_id'):
-            br_rec = self.pool.get(
-                context.get('default_model')
-            ).browse(cr, uid, context['default_res_id'])
+        ) == 'business.requirement' and self._context.get('default_res_id'):
+            br_rec = self.env[
+                self._context.get('default_model')
+            ].browse(self._context.get('default_res_id'))
             subject = 'Re: %s-%s' % (br_rec.name, br_rec.description)
-        res = super(BusinessRequirement, self).message_post(
-            cr, uid, thread_id, body='', subject=subject,
+        return super(BusinessRequirement, self).message_post(
+            body='', subject=subject,
             type='notification', subtype=None, parent_id=False,
             attachments=None, context=None,
             content_subtype='html', **kwargs
         )
-        return res
 
 
 class BusinessRequirementCategory(models.Model):

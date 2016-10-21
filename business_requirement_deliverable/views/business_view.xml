@@ -7,7 +7,7 @@
             <field name="model">business.requirement</field>
             <field name="inherit_id" ref="business_requirement.view_business_requirement_form"/>
             <field name="arch" type="xml">
-                <xpath expr='//page[@string="Business Requirement"]' position='after'>
+                <xpath expr='//page[@name="business_requirement"]' position='after'>
                     <page string="Deliverable Lines">
                         <field name="deliverable_lines" domain="[('business_requirement_line_id', '='. False)]" context="{'tree_view_ref':'business_requirement_deliverable.view_business_requirement_deliverable_tree', 'form_view_ref': 'business_requirement_deliverable.view_business_requirement_deliverable_form',}"/>
                     </page>

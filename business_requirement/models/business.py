@@ -185,10 +185,8 @@ class BusinessRequirement(models.Model):
 
     @api.model
     def create(self, vals):
-        print vals
         if vals.get('name', '/') == '/':
             vals['name'] = self.env['ir.sequence'].next_by_code('business.requirement')
-        print vals
         return super(BusinessRequirement, self).create(vals)
 
     @api.multi

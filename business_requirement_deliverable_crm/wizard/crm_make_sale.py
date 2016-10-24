@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp import api, fields, models
-from openerp.tools.translate import _
 from openerp.exceptions import ValidationError
+from openerp.tools.translate import _
 
 
 class CrmMakeSale(models.TransientModel):
@@ -15,7 +15,8 @@ class CrmMakeSale(models.TransientModel):
         context = self.env.context
         case_id = context and context.get('active_ids', []) or []
         case_id = case_id and case_id[0] or False
-        res = super(CrmMakeSale, self).makeOrder()
+        # res = super(CrmMakeSale, self).makeOrder()
+        res = {}
         if self.update_quotation:
             saleorder = self.env['sale.order'].search([
                 ('origin', '=', _('Opportunity: %s') % str(case_id))])
